@@ -37,6 +37,7 @@ while i < filetype_array.count
   filename = file_temp["Name"]
   filetypeid = file_temp["FileType_ID"]
   ext_temp = ext_array[filetypeid-1]
+  ext_id = ext_temp["ID"]
   extension = ext_temp["Extension"]
 
   if extension == ".jpeg .jpg"
@@ -51,9 +52,8 @@ while i < filetype_array.count
   puts "New file created: " + filename.to_s + extension
   puts ""
 
-  Dir.glob("/testimages/#{filename}.*").each { |filename| 
-    File.rename("#{filename}", "#{filename}#{extension}")
-  }
+  File.rename("testimages/#{filename}", "testimages/#{filename}#{extension}")
+ 
 
   i += 1
 end
